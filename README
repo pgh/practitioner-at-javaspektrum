@@ -17,7 +17,6 @@ The code corresponding to an article of the column is grouped within a package t
 
 	de.javaspektrum.ghadir.practitioner.js<YYYY><MM>
 
-
 ## License information
 
 Copyright 2011 Phillip Ghadir
@@ -34,6 +33,8 @@ Copyright 2011 Phillip Ghadir
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>
 
 ## Contact
 
