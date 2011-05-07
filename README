@@ -15,7 +15,7 @@ This project provides a very simple directory structure:
 
 The code corresponding to an article of the column is grouped within a package that indicates the corresponding issue like the following
 
-	de.javaspektrum.ghadir.practitioner.js<YYYY><MM>
+	de.ghadir.practitioner.js_<YYYY>_<MM>
 
 ## License information
 
