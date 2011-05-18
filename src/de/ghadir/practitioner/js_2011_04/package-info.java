@@ -14,27 +14,19 @@
  *   language governing permissions and limitations under the License.
  */
 
-package de.ghadir.practitioner.js_2011_04.scannerBasedOnEnums;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 /**
- * Created by IntelliJ IDEA.
- * User: ghadir
- * Date: Mar 18, 2011
- * Time: 9:30:53 PM
- */
-class ScanningState {
-
-    StringBuilder sb = new StringBuilder();
-    List<String> result = new ArrayList<String>();
-
-    public Collection<String> getResult() {
-        result.add( sb.toString() );
-        sb.setLength(0);
-        
-        return result;
-    }
-}
+ * This package contains the stuff that's used for illustrating
+ * aspects of maintenance, complexity and extensibility.
+ *
+ * The nested packages that contain several approaches to
+ * hand-crafted CSV parsing.
+ *
+ * (Yes, I know, that has been solved before. But this time
+ * it's built to show some insight.)
+ *
+ * This code is used within the column 'The Practioner'
+ * ('Der Praktiker') in the German magazine JavaSPEKTRUM.
+ *
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
+ * */
+package de.ghadir.practitioner.js_2011_04;
