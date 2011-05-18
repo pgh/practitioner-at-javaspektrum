@@ -26,9 +26,8 @@ import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
- * User: ghadir
- * Date: Mar 26, 2011
- * Time: 12:53:20 AM
+ * @author ghadir
+ * @since Mar 26, 2011 12:53:20 AM
  */
 public class TestClass {
 

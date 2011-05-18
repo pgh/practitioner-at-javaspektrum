@@ -21,10 +21,10 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ghadir
- * Date: Mar 25, 2011
- * Time: 4:48:17 PM
+ * This class provides the CSV parser.
+ *
+ * @author ghadir
+ * @since Mar 25, 2011 4:48:17 PM
  */
 public class CSVParser {
 

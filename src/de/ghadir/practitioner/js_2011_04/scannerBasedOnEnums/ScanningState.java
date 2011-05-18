@@ -21,10 +21,22 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ghadir
- * Date: Mar 18, 2011
- * Time: 9:30:53 PM
+ * This class provides a container facility in order to collect the
+ * processing state of the scanner.
+ *
+ * <br/>
+ *
+ * It contains a accumulator attribute that's used to build a value
+ * of a csv line and a list with values.
+ *
+ * <br/>
+ *
+ * Via the #getResult method a client can query the current state
+ * that has been built since the recent call to #getResult or since
+ * creation of ScanningState.
+ *
+ * @author ghadir
+ * @since Mar 18, 2011 9:30:53 PM
  */
 class ScanningState {
 

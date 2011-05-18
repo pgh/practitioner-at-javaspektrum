@@ -19,10 +19,10 @@ package de.ghadir.practitioner.js_2011_04.scannerBasedOnEnums;
 import java.util.Collection;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ghadir
- * Date: Mar 16, 2011
- * Time: 1:32:59 AM
+ * This class provides the CSV parser.
+ *
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
+ * @since Mar 16, 2011 1:32:59 AM
  */
 public class Scanner {
 

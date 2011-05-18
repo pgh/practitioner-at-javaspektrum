@@ -19,10 +19,31 @@ package de.ghadir.practitioner.js_2011_04.scannerBasedOnEnums;
 import java.util.Collection;
 
 /**
- * Created by IntelliJ IDEA.
- * User: ghadir
- * Date: Mar 16, 2011
- * Time: 1:31:14 AM
+ * This class is the heart of the scanner.
+ *
+ * The enum ScanMode provides the signature for method #scan that's
+ * implemented by every enum value individually.
+ *
+ * <br/>
+ *
+ * Each ScanMode value represents a possible mode of operation of
+ * the scanner that initialized the processing state. Cause of the
+ * statelessness of enum values the processing state like value
+ * accumulator and list of values in the current line have to be
+ * passed into the method #scan as arguments.
+ *
+ * <br/>
+ *
+ * #scan does the handling of the character to scan accordingly to
+ * the current ScanMode and returns the resulting ScanMode.
+ *
+ * <br/>
+ *
+ * It's expected from someone else to take care of setup and keeping
+ * processing state appropriately.
+ *
+ * @author ghadir
+ * @since Mar 16, 2011 1:31:14 AM
  */
 enum ScanMode {
     ReadingWord() {
