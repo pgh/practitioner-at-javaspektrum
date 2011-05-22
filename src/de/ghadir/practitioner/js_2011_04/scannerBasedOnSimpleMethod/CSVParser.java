@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * This class provides the CSV parser.
  *
- * @author ghadir
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since Mar 25, 2011 4:48:17 PM
  */
 public class CSVParser {

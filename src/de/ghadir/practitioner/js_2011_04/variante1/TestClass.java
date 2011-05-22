@@ -26,7 +26,7 @@ import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
- * @author ghadir
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since Mar 26, 2011 12:53:20 AM
  */
 public class TestClass {

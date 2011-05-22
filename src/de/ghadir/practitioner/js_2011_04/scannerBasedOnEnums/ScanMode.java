@@ -42,7 +42,7 @@ import java.util.Collection;
  * It's expected from someone else to take care of setup and keeping
  * processing state appropriately.
  *
- * @author ghadir
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since Mar 16, 2011 1:31:14 AM
  */
 enum ScanMode {
