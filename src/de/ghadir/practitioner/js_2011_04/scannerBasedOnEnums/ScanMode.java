@@ -16,8 +16,6 @@
 
 package de.ghadir.practitioner.js_2011_04.scannerBasedOnEnums;
 
-import java.util.Collection;
-
 /**
  * This class is the heart of the scanner.
  *
@@ -48,49 +46,61 @@ import java.util.Collection;
 enum ScanMode {
     ReadingWord() {
         @Override
-        protected ScanMode scan(char ch, StringBuilder sb, Collection<String> result) {
+        public ScanMode scan(char ch, ScanningState scanningState) {
             switch ( ch ) {
                 case '"': return Quoted;
                 case '\\' : return Masked;
                 case ';' :
-                    result.add( sb.toString() );
-                    sb.setLength( 0 );
+                    scanningState.result.add( scanningState.sb.toString() );
+                    scanningState.sb.setLength( 0 );
                     return ReadingWord;
+                case '\n' :
+                    scanningState.isLineComplete = true;
+                    return LineEnd;
                 default:
-                    sb.append( ch );
+                    scanningState.sb.append( ch );
                     return ReadingWord;
             }
         }},
+    LineEnd() {
+        @Override
+        public ScanMode scan(char ch, ScanningState scanningState) {
+            if ( ch == '\n' || ch == '\r' ) {
+
+                scanningState.isLineComplete = true;
+                return LineEnd;
+            } else {
+                scanningState.isLineComplete = false;
+                return ReadingWord.scan(ch, scanningState);
+            }
+        }
+    },
     Masked() {
         @Override
-        protected ScanMode scan(char ch, StringBuilder sb, Collection<String> result) {
-            sb.append( ch );
+        public ScanMode scan(char ch, ScanningState scanningState) {
+            scanningState.sb.append( ch );
             return ReadingWord;
         }},
     Quoted() {
         @Override
-        protected ScanMode scan(char ch, StringBuilder sb, Collection<String> result) {
+        public ScanMode scan(char ch, ScanningState scanningState) {
             switch ( ch ) {
                 case '"':
                     return ReadingWord;
                 case '\\':
                     return MaskedInQuoted;
                 default:
-                    sb.append( ch );
+                    scanningState.sb.append( ch );
                     return Quoted;
             }
         }},
     MaskedInQuoted() {
         @Override
-        protected ScanMode scan(char ch, StringBuilder sb, Collection<String> result) {
-            sb.append( ch );
+        public ScanMode scan(char ch, ScanningState scanningState) {
+            scanningState.sb.append( ch );
             return Quoted;
         }};
 
     
-    public ScanMode scan(char ch, ScanningState scanningState) {
-        return this.scan( ch, scanningState.sb, scanningState.result );
-    }
-
-    protected abstract ScanMode scan(char ch, StringBuilder sb, Collection<String> result);
+    public abstract ScanMode scan(char ch, ScanningState scanningState);
 }

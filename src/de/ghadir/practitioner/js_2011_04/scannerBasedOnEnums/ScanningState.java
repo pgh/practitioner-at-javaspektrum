@@ -43,10 +43,16 @@ class ScanningState {
     StringBuilder sb = new StringBuilder();
     List<String> result = new ArrayList<String>();
 
+    boolean isLineComplete = false;
+
     public Collection<String> getResult() {
         result.add( sb.toString() );
         sb.setLength(0);
         
         return result;
+    }
+
+    public boolean isLineComplete() {
+        return isLineComplete;
     }
 }
