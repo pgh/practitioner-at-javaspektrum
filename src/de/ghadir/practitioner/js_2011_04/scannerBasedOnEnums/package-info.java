@@ -25,6 +25,12 @@
  * the package contents is designed to provide a very simple access to
  * the features of the package.
  *
+ * <br/>
+ *
+ * This implementation should be capable of handling arbitrary large data
+ * sets provided as CSV. It leaves binding of read values up to the caller
+ * of the service provided in here.
+ *
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * */
 package de.ghadir.practitioner.js_2011_04.scannerBasedOnEnums;

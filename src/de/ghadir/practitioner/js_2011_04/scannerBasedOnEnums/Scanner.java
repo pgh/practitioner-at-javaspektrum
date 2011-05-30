@@ -32,10 +32,36 @@ import java.util.Iterator;
 public class Scanner {
 
 
+    /**
+     * This method delegates to #readCSV(InputStreamReader)
+     *
+     * @param is - an input stream
+     * @return Iterator for rows containing collections of values
+     * @see #readCSV(java.io.InputStreamReader)
+     * */
     public Iterator<Collection<String>> readCSV(final InputStream is) {
         return readCSV( new InputStreamReader( is ) );
     }
 
+    /**
+     * This method provides the service for scanning an input via the
+     * given reader.
+     *
+     * <br/>
+     *
+     * The given reader is proxied via an iterator that can be used by
+     * the invoker of readCSV to consume the values row by row.
+     *
+     * <br/>
+     *
+     * In order to signal any issues regarding IO exceptions it's
+     * decided intentionally to break Liskov's law and to throw a
+     * runtime exception from the iterator's hasNext()-Method in
+     * case of an IOException.
+     *
+     * @param is - an InputStreamReader
+     * @return an iterator that contains
+     */
     public Iterator<Collection<String>> readCSV(final InputStreamReader is) {
 
         return new Iterator<Collection<String>>() {
@@ -86,6 +112,13 @@ public class Scanner {
         };
     }
 
+    /**
+     * A simple method for read a single line.
+     *
+     * Should be deprecated.
+     *
+     * @deprecated since 2011-05-30
+     * */
     public Collection<String> readline(String line) {
 
         ScanningState scanningState = new ScanningState();

@@ -21,14 +21,26 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This class provides the CSV parser.
+ * This class provides a simple CSV parser.
+ *
+ * <br/>
+ *
+ * This class is currently applicable on single lines of CSV data.
  *
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since Mar 25, 2011 4:48:17 PM
  */
 public class CSVParser {
 
-
+    /**
+     * This method does the service.
+     *
+     * Provide the data as a string and get the results as a
+     * collection of strings.
+     *
+     * @param line - the CSV data
+     * @return the resulting values
+     * */
     public Collection<String> readline(String line) {
 
         boolean isQuoted = false;

@@ -35,7 +35,7 @@ import java.util.List;
  * that has been built since the recent call to #getResult or since
  * creation of ScanningState.
  *
- * @author ghadir
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since Mar 18, 2011 9:30:53 PM
  */
 class ScanningState {

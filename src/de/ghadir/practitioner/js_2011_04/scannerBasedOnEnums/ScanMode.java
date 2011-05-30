@@ -101,6 +101,16 @@ enum ScanMode {
             return Quoted;
         }};
 
-    
+
+    /**
+     * The method provides the mechanism for dispatching to the
+     * required functionality corresponding to the signal (provided
+     * via param ch within the current state (represented by this).
+     *
+     * @param ch
+     * @param scanningState - the state that's manipulated during
+     *    processing
+     * @return the resulting state
+     * */
     public abstract ScanMode scan(char ch, ScanningState scanningState);
 }
