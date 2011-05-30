@@ -19,6 +19,7 @@ package de.ghadir.practitioner.js_2011_04.scannerBasedOnEnums;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -32,10 +33,14 @@ public class Scanner {
 
 
     public Iterator<Collection<String>> readCSV(final InputStream is) {
+        return readCSV( new InputStreamReader( is ) );
+    }
+
+    public Iterator<Collection<String>> readCSV(final InputStreamReader is) {
 
         return new Iterator<Collection<String>>() {
 
-            final byte buffer[] = new byte[8192];
+            final char buffer[] = new char[8192];
             int offset = 0;
             int len = 0;
             boolean isClosed = false;
@@ -69,7 +74,7 @@ public class Scanner {
                 ScanMode s = ScanMode.ReadingWord;
 
                 while ( !scanningState.isLineComplete() && hasNext() ) {
-                    s = s.scan( (char) buffer[offset++], scanningState );
+                    s = s.scan( buffer[offset++], scanningState );
                 }
 
                 return scanningState.getResult();
