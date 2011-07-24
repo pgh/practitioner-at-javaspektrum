@@ -1,8 +1,5 @@
 package de.ghadir.practitioner.js_2011_05.model.customer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author ghadir
  * @since 7/20/11 9:58 PM

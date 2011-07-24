@@ -16,6 +16,11 @@ public class Customer {
     }
 
     public void setAttribute(CustomerAttributes attr, Object o) {
+        if ( o != null && ! attr.getType().isAssignableFrom( o.getClass() ) ) {
+            throw new IllegalArgumentException(
+                    "Object " + o + " is not assignable to Attribute '" + attr.name() + "'" );
+        }
+
         this.attributes.put( attr, o );
     }
 }
