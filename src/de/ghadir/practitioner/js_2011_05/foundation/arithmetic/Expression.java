@@ -16,12 +16,10 @@
 
 package de.ghadir.practitioner.js_2011_05.foundation.arithmetic;
 
-import java.math.BigDecimal;
-
 /**
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 7/25/11 9:16 AM
  */
-public abstract class Expression {
-    public abstract BigDecimal evalInCtx(Binding env);
+public abstract class Expression<T> {
+    public abstract T evalInCtx(Binding env);
 }
