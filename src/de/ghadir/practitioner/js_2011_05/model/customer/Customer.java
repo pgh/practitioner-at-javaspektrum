@@ -20,7 +20,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
- * @author ghadir
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 7/20/11 10:02 PM
  */
 public class Customer {

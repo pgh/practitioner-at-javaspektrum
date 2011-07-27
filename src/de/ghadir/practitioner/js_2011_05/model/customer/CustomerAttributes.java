@@ -17,7 +17,7 @@
 package de.ghadir.practitioner.js_2011_05.model.customer;
 
 /**
- * @author ghadir
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 7/20/11 9:58 PM
  */
 public enum CustomerAttributes {
@@ -25,7 +25,9 @@ public enum CustomerAttributes {
     id( "ID", false ),
     firstName( "First Name" ),
     lastName( "Last Name" ),
-    number( "Customer No", Integer.class );
+    number( "Customer No", Integer.class ),
+    incomePerMonth( "Monthly Income", Integer.class ),
+    incomePerYear( "Annual Income", Integer.class );
 
     private String label;
     private boolean isEditable;
