@@ -19,8 +19,15 @@ package de.ghadir.practitioner.js_2011_05.model.basicStuff;
 import de.ghadir.practitioner.js_2011_05.foundation.arithmetic.Binding;
 import de.ghadir.practitioner.js_2011_05.foundation.arithmetic.Expression;
 import de.ghadir.practitioner.js_2011_05.foundation.arithmetic.Parser;
+import de.ghadir.practitioner.js_2011_05.foundation.arithmetic.Symbol;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
+ * This class encapsulates the feature for storing user input as well as
+ * computing the value via a given formula.
+ *
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 7/25/11 9:05 AM
  */
@@ -101,4 +108,14 @@ public class ECField<T extends Comparable> extends Field<T> {
         return null;
     }
 
+    public Collection<Symbol> getReferencedSymbols() {
+        if ( expr != null ) {
+            return expr.getSymbols();
+        }
+        return new ArrayList<Symbol>();
+    }
+
+    public boolean internalIsCalculated() {
+        return calculated != null;
+    }
 }
