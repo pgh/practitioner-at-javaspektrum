@@ -33,6 +33,7 @@ public class Field<T extends Comparable> implements FieldListener {
 
     public void setValue(T value) {
         internalSetValue( value );
+        notifyListeners();
     }
 
     public void registerListener(FieldListener client) {
