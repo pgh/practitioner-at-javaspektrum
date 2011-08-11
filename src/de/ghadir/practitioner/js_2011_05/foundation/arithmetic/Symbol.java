@@ -16,14 +16,18 @@
 
 package de.ghadir.practitioner.js_2011_05.foundation.arithmetic;
 
-import java.util.Collection;
-
 /**
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
- * @since 7/25/11 9:16 AM
+ * @since 7/26/11 4:59 PM
  */
-public abstract class Expression<T> {
-    public abstract T evalInCtx(Binding env);
+public class Symbol {
+    private String token;
 
-    public abstract Collection<Symbol> getSymbols();
+    public Symbol(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
+    }
 }

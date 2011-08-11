@@ -16,12 +16,36 @@
 
 package de.ghadir.practitioner.js_2011_05.foundation.arithmetic;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 7/25/11 9:16 AM
  */
 public class Parser {
-    public Expression evaluate(String formula) {
-        throw new UnsupportedOperationException();
+    public Expression evaluate(final String formula) {
+        // throw new UnsupportedOperationException(); // TODO
+
+        return new Expression() {                    // TODO evaluate is not properly implemented...
+
+            Collection<Symbol> symbols = new ArrayList<Symbol>();
+
+            {
+                for (String s : formula.split( "\\W+" ) ) {
+                    symbols.add( new Symbol( s ) );
+                }
+            }
+
+            @Override
+            public Object evalInCtx(Binding env) {
+                return null; // TODO
+            }
+
+            @Override
+            public Collection<Symbol> getSymbols() {
+                return symbols;
+            }
+        };
     }
 }
