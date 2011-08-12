@@ -20,19 +20,19 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author ghadir
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 7/20/11 9:52 PM
  */
 public class MainFrame extends JFrame {
 
-    private CustomerTable customerTable = new CustomerTable();
+    private OrderItemTable orderItemTable = new OrderItemTable();
 
     public MainFrame() throws HeadlessException {
         super( "Innovative UIs - A primitive Experiment" );
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        add(new JScrollPane(customerTable));
+        add(new JScrollPane( orderItemTable ) );
 
         setPreferredSize( new Dimension( 800, 600 ));
         setSize( new Dimension( 800, 600 ));
