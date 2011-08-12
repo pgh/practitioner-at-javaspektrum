@@ -20,20 +20,33 @@ import de.ghadir.practitioner.js_2011_05.model.customer.Customer;
 import de.ghadir.practitioner.js_2011_05.model.customer.CustomerAttributes;
 
 import javax.swing.table.AbstractTableModel;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
- * @author ghadir
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * since 7/24/11 8:18 PM
  */
 public class CustomerTableModel extends AbstractTableModel {
 
-    private Customer customers[] = new Customer[15];
-
+    private Customer customers[];
 
     {
-        for (int i = 0; i < customers.length; i++) {
-            customers[i] = new Customer();
+        List<Customer> result = new ArrayList<Customer>();
+
+        int id = 1000;
+        for ( String lastname : Arrays.asList( "Meier", "MŸller", "Schulze" ) ) {
+            for ( String firstname : Arrays.asList( "Harry", "Ron", "Hermine", "Fred", "George" ) ) {
+                Customer customer = new Customer();
+                customer.setAttribute( CustomerAttributes.id, "" + ++id );
+                customer.setAttribute( CustomerAttributes.firstName,  firstname );
+                customer.setAttribute( CustomerAttributes.lastName, lastname );
+
+                result.add(customer);
+            }
         }
+        customers = result.toArray( new Customer[ result.size() ] );
     }
 
 
