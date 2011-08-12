@@ -21,7 +21,7 @@ import javax.swing.table.TableColumnModel;
 import java.awt.*;
 
 /**
- * @author ghadir
+ * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 7/20/11 9:54 PM
  */
 public class CustomerTable extends JTable {
