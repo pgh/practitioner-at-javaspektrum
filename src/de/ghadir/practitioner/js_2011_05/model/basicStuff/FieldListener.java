@@ -20,7 +20,7 @@ package de.ghadir.practitioner.js_2011_05.model.basicStuff;
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 7/25/11 8:59 AM
  */
-public interface FieldListener {
+interface FieldListener {
 
     void notifyChange(Field source);
 }

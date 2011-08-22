@@ -24,7 +24,7 @@ import java.util.HashSet;
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 8/18/11 4:00 PM
  */
-public class Reset implements MutexListener {
+class Reset implements MutexListener {
     private Collection<MutexListener> mutexedFields = new HashSet<MutexListener>();
 
     Object owner;

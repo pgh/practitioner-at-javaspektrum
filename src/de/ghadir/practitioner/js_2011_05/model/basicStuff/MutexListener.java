@@ -20,7 +20,7 @@ package de.ghadir.practitioner.js_2011_05.model.basicStuff;
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 8/18/11 4:03 PM
  */
-public interface MutexListener {
+interface MutexListener {
 
     boolean notifyChange(Reset source);
 }
