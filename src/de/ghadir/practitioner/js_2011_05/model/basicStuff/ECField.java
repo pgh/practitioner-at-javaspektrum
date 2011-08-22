@@ -60,15 +60,17 @@ public class ECField<T extends Comparable> extends Field<T> {
 
     @Override
     public void setValue(T input) {
-        internalSetValue( input );
-        this.calculated = null;
+        boolean isNewValue = internalSetValue( input );
 
-        notifyListeners();
+        if ( isNewValue ) {
+            notifyListeners();
+            reset.notifyListeners();
+        }
     }
 
     protected void setCalculated(T calculated) {
-        this.calculated = calculated;
         internalSetValue( null );
+        this.calculated = calculated;
 
         notifyListeners();
     }
@@ -91,6 +93,17 @@ public class ECField<T extends Comparable> extends Field<T> {
         return calculated;
     }
 
+
+    @Override
+    protected boolean internalSetValue(T value) {
+        if ( super.internalSetValue(value) ) {
+            calculated = null;
+
+            return true;
+        }
+
+        return false;
+    }
 
     @Override
     public void notifyChange(Field source) {

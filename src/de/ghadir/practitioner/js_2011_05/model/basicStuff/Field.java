@@ -23,17 +23,21 @@ import java.util.Collection;
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
  * @since 7/25/11 9:02 AM
  */
-public class Field<T extends Comparable> implements FieldListener {
+public class Field<T extends Comparable> implements FieldListener, MutexListener {
     private T value;
     private Collection<FieldListener> listeners = new ArrayList<FieldListener>();
+
+    protected Reset reset = new Reset( this );
 
     public T getValue() {
         return value;
     }
 
     public void setValue(T value) {
-        internalSetValue( value );
-        notifyListeners();
+        if ( internalSetValue( value ) ) {
+            notifyListeners();
+            reset.notifyListeners();
+        }
     }
 
     public void registerListener(FieldListener client) {
@@ -47,10 +51,31 @@ public class Field<T extends Comparable> implements FieldListener {
     }
 
 
+    public boolean notifyChange(Reset source) {
+        if ( this != source.owner ) {
+            internalSetValue(null);
+
+
+            return true;
+        }
+
+        return false;
+    }
+
     public void notifyChange(Field source) {
     }
 
-    protected void internalSetValue(T value) {
-        this.value = value;
+    protected boolean internalSetValue(T value) {
+        T v = this.value;
+        if ( v != value || v != null && !v.equals( value ) ) {
+            this.value = value;
+            return true;
+        }
+
+        return false;
+    }
+
+    public void registerMutexedFields(Field[] fields) {
+        reset.registerListeners( fields );
     }
 }
