@@ -67,6 +67,14 @@ public class OrderItem extends Binding {
     // instance initializer
     {
         initializer.registerECFieldListeners(OrderItem.class, this);
+
+        mutex( numberOfUnits, total );
+    }
+
+    private void mutex(Field... fields) {
+        for ( Field f : fields ) {
+            f.registerMutexedFields( fields );
+        }
     }
 
     public BigDecimal getNumberOfUnits() {
