@@ -107,15 +107,6 @@ public class OrderItem extends Binding {
     public Field<BigDecimal> getPricePerUnitField() { return pricePerUnit; }
     public Field<BigDecimal> getTotalField() { return total; }
 
-
-    public static void main(String[] args) {
-        OrderItem oi = new OrderItem();
-        oi.numberOfUnits.setValue( new BigDecimal( "150" ) );
-        oi.pricePerUnit.setValue( new BigDecimal( 200 ) );
-
-        System.out.println( oi.total.getValue() );
-    }
-
     @Override
     public Object getValue(String token) {
         throw new UnsupportedOperationException(); // TODO
