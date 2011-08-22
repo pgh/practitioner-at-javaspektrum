@@ -103,9 +103,9 @@ public class OrderItem extends Binding {
 
 
 
-    public Field getNumberOfUnitsField() { return numberOfUnits; }
-    public Field getPricePerUnitField() { return pricePerUnit; }
-    public Field getTotalField() { return total; }
+    public Field<BigDecimal> getNumberOfUnitsField() { return numberOfUnits; }
+    public Field<BigDecimal> getPricePerUnitField() { return pricePerUnit; }
+    public Field<BigDecimal> getTotalField() { return total; }
 
 
     public static void main(String[] args) {

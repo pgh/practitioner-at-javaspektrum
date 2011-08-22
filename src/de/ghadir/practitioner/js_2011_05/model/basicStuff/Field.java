@@ -55,7 +55,6 @@ public class Field<T extends Comparable> implements FieldListener, MutexListener
         if ( this != source.owner ) {
             internalSetValue(null);
 
-
             return true;
         }
 

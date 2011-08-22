@@ -88,7 +88,7 @@ public class OrderItemTable extends JTable {
 
     private class OrderItemModel implements TableModel {
 
-        public final String columns[] = { "A", "B", "C" };
+        public final String columns[] = { "Number of Units", "Price per Unit", "Total Price" };
 
         java.util.List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
@@ -119,7 +119,7 @@ public class OrderItemTable extends JTable {
             return true;
         }
 
-        public Object getValueAt(int rowIndex, int columnIndex) {
+        public Field<BigDecimal> getValueAt(int rowIndex, int columnIndex) {
             OrderItem item = orderItems.get(rowIndex);
 
             switch ( columnIndex ) {
@@ -136,11 +136,7 @@ public class OrderItemTable extends JTable {
 
             BigDecimal v = null;
 
-            if ( aValue instanceof Field ) {
-                v = ((Field<BigDecimal>) aValue).getValue();
-            } else if ( aValue instanceof BigDecimal ) {
-                v = (BigDecimal) aValue;
-            } else if ( aValue instanceof String ) {
+            if ( aValue instanceof String ) {
                 try {
                     v = new BigDecimal( (String) aValue );
                 } catch (Exception e) {
@@ -150,13 +146,7 @@ public class OrderItemTable extends JTable {
                 throw new IllegalArgumentException();
             }
 
-            OrderItem item = orderItems.get(rowIndex);
-            switch ( columnIndex ) {
-                case 0  : item.setNumberOfUnits( v ); break;
-                case 1  : item.setPricePerUnit( v ); break;
-                case 2  : item.setTotal( v ); break;
-                default: throw new UnsupportedOperationException(); // TODO
-            }
+            getValueAt(rowIndex, columnIndex).setValue( v );
         }
 
         public void addTableModelListener(TableModelListener l) {
