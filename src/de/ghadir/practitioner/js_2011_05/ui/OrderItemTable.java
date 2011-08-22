@@ -16,19 +16,17 @@
 
 package de.ghadir.practitioner.js_2011_05.ui;
 
-import de.ghadir.practitioner.js_2011_05.model.basicStuff.ECField;
+import de.ghadir.practitioner.js_2011_05.basicUIStuff.FieldCellEditor;
+import de.ghadir.practitioner.js_2011_05.basicUIStuff.FieldCellRenderer;
 import de.ghadir.practitioner.js_2011_05.model.basicStuff.Field;
 import de.ghadir.practitioner.js_2011_05.model.order.OrderItem;
 
 import javax.swing.*;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Enumeration;
 
 /**
  * @author Phillip Ghadir, phillip.ghadir@innoq.com
@@ -48,42 +46,10 @@ public class OrderItemTable extends JTable {
         setFocusable( true );
         setFillsViewportHeight( true );
 
-        setDefaultEditor( Field.class, new InnerCellEditor() );
+        setDefaultEditor( Field.class, new FieldCellEditor() );
+        setDefaultRenderer( Field.class, new FieldCellRenderer() );
 
         setModel( new OrderItemModel() );
-
-
-        for ( Enumeration<TableColumn> columns = getColumnModel().getColumns(); columns.hasMoreElements(); ) {
-            TableColumn tc = columns.nextElement();
-
-            tc.setCellRenderer( new InnerCellRenderer() );
-        }
-    }
-
-
-    private class InnerCellRenderer extends JLabel implements TableCellRenderer {
-
-        {
-            setHorizontalAlignment( JLabel.RIGHT );
-        }
-
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-
-            Field valueAt = (Field) table.getValueAt(row, column);
-
-            String label = "" + valueAt.getValue();
-            setForeground( Color.BLUE );
-            setToolTipText( "Entered value" );
-
-            if ( valueAt instanceof ECField && ((ECField) valueAt).internalIsCalculated() ) {
-                setForeground( Color.BLACK );
-                setToolTipText( "Calculated value" );
-            }
-
-            setText( label );
-
-            return this;
-        }
     }
 
     private class OrderItemModel implements TableModel {
@@ -158,25 +124,4 @@ public class OrderItemTable extends JTable {
         }
     }
 
-    private class InnerCellEditor extends DefaultCellEditor {
-
-        private InnerCellEditor() {
-            super(new JTextField());
-        }
-
-        @Override
-        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-
-            ((JTextField) this.editorComponent).setText("" + ((Field) table.getValueAt( row, column )).getValue());
-
-            return this.editorComponent;
-        }
-
-        @Override
-        public Object getCellEditorValue() {
-            Object cellEditorValue = super.getCellEditorValue();
-            System.out.println("OrderItemTable$InnerCellEditor.getCellEditorValue --- cellEditorValue = " + cellEditorValue + " - " + cellEditorValue.getClass()  );
-            return cellEditorValue;
-        }
-    }
 }
