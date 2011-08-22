@@ -35,27 +35,22 @@ class OrderItemInitializer {
             if (field instanceof ECField) {
                 ECField ecField = (ECField) field;
 
-                for ( Object s : ecField.getReferencedSymbols() ) { // TODO assignment to object
+                for ( Symbol s : getReferencedSymbols(ecField)) {
 
-                    Field<BigDecimal> supplier = getField(theClass, theInstance, (Symbol) s); // TODO stupid cast
+                    Field<BigDecimal> supplier = getField(theClass, theInstance, s);
                     if ( supplier != null ) {
                         supplier.registerListener(field);
                     }
                 }
-
-                /*
-                // TODO
-                for ( String s : ecField.mutexNotifications ) {
-                    Field<BigDecimal> supplier = getField(theClass, theInstance, s);
-                    if ( supplier != null ) {
-                        supplier.registerListenerFor(field);
-                    }
-
-                }
-                */
             }
         }
     }
+
+    @SuppressWarnings( "unchecked" )
+    private Collection<Symbol> getReferencedSymbols(ECField ecField) {
+        return ecField.getReferencedSymbols();
+    }
+
 
     private Collection<Field<BigDecimal>> getFields( Class<OrderItem> theClass, Object theInstance ) {
 
@@ -65,8 +60,7 @@ class OrderItemInitializer {
                 f.setAccessible(true);
 
                 if (Field.class.isAssignableFrom(f.getType())) {
-                    System.err.println( f );
-                    result.add((Field<BigDecimal>) f.get( theInstance ));
+                    result.add((Field<BigDecimal>) f.get( theInstance ));     // TODO unchecked cast
                 }
             }
             return result;
@@ -85,7 +79,7 @@ class OrderItemInitializer {
             java.lang.reflect.Field field = theClass.getDeclaredField(fieldname);
             field.setAccessible(true);
 
-            return (Field<BigDecimal>) field.get( theInstance );
+            return (Field<BigDecimal>) field.get( theInstance );   // TODO unchecked cast
         } catch (NoSuchFieldException e) {
             throw new IllegalArgumentException("Row does not contain a variable '" + fieldname + "'", e);
         } catch (IllegalAccessException e) {
